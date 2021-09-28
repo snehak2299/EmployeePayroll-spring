@@ -30,6 +30,8 @@ public class EmployeePayrollController {
 		List<EmployeePayrollData> employeePayrollData=null;
 		employeePayrollData=employeePayrollService.getEmployeePayrollData();
 		ResponseDTO respDTO=new ResponseDTO("Get call Success",employeePayrollData);
+		//respDTO.getData();	
+		respDTO.getData();
 		return new ResponseEntity<ResponseDTO>(respDTO,HttpStatus.OK);
 	}
 	
