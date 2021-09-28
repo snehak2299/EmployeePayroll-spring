@@ -29,8 +29,6 @@ public class EmployeePayrollController {
 	public ResponseEntity<ResponseDTO>  getEmployeePayrollData(){
 		List<EmployeePayrollData> employeePayrollData=null;
 		employeePayrollData=employeePayrollService.getEmployeePayrollData();
-		//EmployeePayrollData employeePayrollData=null;
-		//employeePayrollData=new EmployeePayrollData(1,new EmployeePayrollDTO("Pankaj",3000));
 		ResponseDTO respDTO=new ResponseDTO("Get call Success",employeePayrollData);
 		return new ResponseEntity<ResponseDTO>(respDTO,HttpStatus.OK);
 	}
