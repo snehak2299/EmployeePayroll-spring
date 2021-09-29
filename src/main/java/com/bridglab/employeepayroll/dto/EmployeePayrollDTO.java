@@ -1,44 +1,32 @@
 package com.bridglab.employeepayroll.dto;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 
-public class EmployeePayrollDTO {
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import lombok.ToString;
+
+public @ToString class EmployeePayrollDTO {
 	
 	@Pattern(regexp="^[A-Z]{1}[a-zA-Z\\s]{2,}$",message="Employee name Invalid") //validation added for name
 	public String name;
 
 	@Min(value=500,message="Min wage should be more than 500") //validation for salary added
 	public long salary;
+	public String gender;
 
-	public EmployeePayrollDTO(String name, long salary)  {
-		super();
-		this.name = name;
-		this.salary = salary;
-	}
+	@JsonFormat(pattern="dd MMM yyyy")
+	public LocalDate startDate;
 
-	public EmployeePayrollDTO() {
-		super();
-	}
+	public String note;
 
-	@Override
-	public String toString() {
-		return "EmployeePayrollDTO [name=" + name + ", salary=" + salary + "]";
-	}
+	public String profilePic;
 
-	public String getName() {
-		return name;
-	}
+	public List<String> departments;
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public long getSalary() {
-		return salary;
-	}
-
-	public void setSalary(long salary) {
-		this.salary = salary;
-	}
+	
 }
