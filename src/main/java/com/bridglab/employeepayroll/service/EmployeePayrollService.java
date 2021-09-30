@@ -3,14 +3,19 @@ package com.bridglab.employeepayroll.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bridglab.employeepayroll.EmployeePayrollRepository.EmployeePayrollRepository;
 import com.bridglab.employeepayroll.dto.EmployeePayrollDTO;
 import com.bridglab.employeepayroll.exception.EmployeePayrollException;
 import com.bridglab.employeepayroll.model.EmployeePayrollData;
 
 @Service
 public class EmployeePayrollService implements IEmployeePayrollService {
+	@Autowired
+	private EmployeePayrollRepository employeePayrollRepository;
 	
 	private List<EmployeePayrollData> employeePayrollList=new ArrayList<>();
 
@@ -22,7 +27,7 @@ public class EmployeePayrollService implements IEmployeePayrollService {
 
 	@Override
 	public EmployeePayrollData getEmployeePayrollDataNyId(int empId) {
-		
+	
 		return employeePayrollList.stream().filter(empData->empData.getEmployeeId()==empId)
 				.findFirst()
 				.orElseThrow(()->new EmployeePayrollException("Employee not found"));
@@ -30,12 +35,12 @@ public class EmployeePayrollService implements IEmployeePayrollService {
 
 	@Override
 	public EmployeePayrollData createEmployeePayrollData(EmployeePayrollDTO empPayrollDTO) {
-		// TODO Auto-generated method stub
 		EmployeePayrollData employeePayrollData=null;
 		employeePayrollData=new EmployeePayrollData(employeePayrollList.size()+1,empPayrollDTO);
 		employeePayrollList.add(employeePayrollData);
 		return employeePayrollData;
 	}
+
 
 
 	@Override
