@@ -32,8 +32,6 @@ public class EmployeePayrollService implements IEmployeePayrollService {
 		return employeePayrollRepository
 				.findById(empId)
 				.orElseThrow(()->new EmployeePayrollException("Employee with empId"+empId+"doesn't exits..!!"));
-	
-	
 	}
 
 	@Override
@@ -57,6 +55,11 @@ public class EmployeePayrollService implements IEmployeePayrollService {
 		EmployeePayrollData empData=this.getEmployeePayrollDataById(empId);
 		empData.updateEmployeePayrollData(empPayrollDTO);
 		return employeePayrollRepository.save(empData);
+	}
+
+	@Override
+	public List<EmployeePayrollData> getEmployeesByDepartment(String department) {
+		return employeePayrollRepository.findEmployeesByDepartment(department);
 	}
 
 }

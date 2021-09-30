@@ -12,9 +12,9 @@ public class EmployeePayrollAppApplication {
 	public static void main(String[] args) {
 		ApplicationContext context=SpringApplication.run(EmployeePayrollAppApplication.class, args);
 		log.info("Employee Payroll App started in {} Envoronment",
-				context.getEnvironment().getProperty("environment"));
+				context.getEnvironment().getProperty("environment")); // which environment using
 		log.info("payroll service DB User is {}",
-				context.getEnvironment().getProperty("spring.datasource.username"));
+				context.getEnvironment().getProperty("spring.datasource.username")); //check username updated or not
 	}
 
 }
