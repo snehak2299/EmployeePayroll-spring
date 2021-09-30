@@ -40,17 +40,18 @@ public @Data class EmployeePayrollData {
 	@Column(name="department")
 	private List<String> departments;
 	
-	public EmployeePayrollData(int employeeId,EmployeePayrollDTO empPayrollDTO) {
-		super();
-		
-		this.employeeId = employeeId;
-		this.name = name;
-		this.salary = salary;
-		this.gender = gender;
-		this.startDate = startDate;
-		this.note = note;
-		this.profilePic = profilePic;
-		this.departments = departments;
+	public EmployeePayrollData( EmployeePayrollDTO employeePayrollDTO) {
+		this.updateEmployeePayrollData (employeePayrollDTO);	
+	}
+
+	public void updateEmployeePayrollData(EmployeePayrollDTO employeePayrollDTO) {
+		this.name = employeePayrollDTO.name;
+		this.salary = employeePayrollDTO.salary;
+		this.gender=employeePayrollDTO.gender;
+		this.startDate=employeePayrollDTO.startDate;
+		this.note=employeePayrollDTO.note;
+		this.profilePic=employeePayrollDTO.profilePic;
+		this.departments=employeePayrollDTO.departments;
 	}
 	
 	
